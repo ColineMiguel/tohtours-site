@@ -73,6 +73,8 @@
 
   --rayon: 22px;
   --rayon-petit: 14px;
+  --rayon-carte: 12px;        /* cartes : circuits, avis, étapes d'itinéraire */
+  --rayon-mini: 8px;          /* vignettes et lignes d'activités */
   --largeur: 1240px;
   --gouttiere: clamp(16px, 4vw, 48px);
   --section: clamp(64px, 10vw, 128px);
@@ -567,3 +569,14 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .bientot__photo { margin: 0; border-radius: var(--rayon); overflow: hidden; aspect-ratio: 4 / 5; box-shadow: var(--ombre); }
 .bientot__photo img { width: 100%; height: 100%; object-fit: cover; }
 @media (max-width: 860px) { .bientot--photo { grid-template-columns: 1fr; } .bientot__photo { aspect-ratio: 4 / 3; order: -1; } }
+
+/* Arrondis hiérarchisés (validé par Coline le 12/11) :
+   grandes photos = --rayon, blocs d'accès = 18px, cartes = --rayon-carte, vignettes = --rayon-mini */
+.acces__bloc { border-radius: 18px; }
+.circuit, .avis__carte, .itineraire li { border-radius: var(--rayon-carte); }
+.carte__item { border-radius: var(--rayon-mini); }
+.carte__detail .vignette { border-radius: var(--rayon-mini); }
+@media (max-width: 860px) {
+  .carte__detail .vignette { clip-path: inset(0 0 100% 0 round var(--rayon-mini)); }
+  .carte__item.est-active .vignette { clip-path: inset(0 0 0 0 round var(--rayon-mini)); }
+}
