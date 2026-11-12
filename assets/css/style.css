@@ -25,6 +25,7 @@
 :root {
   --orange: #e67e22;          /* orange de la charte : boutons, mots en Satisfy */
   --orange-texte: #b4570f;    /* orange assez foncé pour du texte sur fond clair */
+  --orange-accent: #c2600e;   /* mots en Satisfy sur fond clair (lisibles en grand) */
   --sur-orange: #2a1d0e;      /* texte sur les boutons orange */
   --turquoise: #1da4a6;       /* petit accent : contour clavier */
 
@@ -39,7 +40,7 @@
   --marque: #0c6463;          /* titres, menu, petites étiquettes */
   --forte: #0f7372;           /* grandes bandes de couleur */
   --sur-forte: #fbf6ee;       /* texte sur les bandes */
-  --sur-forte-doux: rgb(251 246 238 / 0.86);
+  --sur-forte-doux: rgb(251 246 238 / 0.94);
   --profonde: #0a4a4b;        /* pied de page */
   --voile: 6 45 46;           /* voile sur les photos (rgb) */
   --accent-sur-forte: #ffb874; /* mots en Satisfy sur les bandes */
@@ -120,10 +121,11 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .accent {
   font-family: var(--script);
   font-weight: 400;
-  color: var(--orange);
+  color: var(--orange-accent);
   letter-spacing: 0;
   font-size: 1.05em;
 }
+.heros__texte .accent, .acces__bloc .accent { color: var(--orange); }
 
 .conteneur { width: min(100% - 2 * var(--gouttiere), var(--largeur)); margin-inline: auto; }
 .lien-evitement {
@@ -245,7 +247,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .acces__bloc img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform 1.2s var(--sortie); }
 .acces__bloc::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgb(var(--voile) / 0.05) 30%, rgb(var(--voile) / 0.9)); }
 .acces__bloc:hover img { transform: scale(1.04); }
-.acces__bloc h3 { font-size: clamp(1.8rem, 1.3rem + 2vw, 3rem); }
+.acces__bloc h2 { font-size: clamp(1.8rem, 1.3rem + 2vw, 3rem); }
 .acces__bloc p { margin: 0.5em 0 0; font-weight: 500; }
 .acces__fleche {
   margin-left: auto; flex: none; display: grid; place-items: center;
@@ -415,4 +417,145 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .bientot { min-height: 60vh; display: grid; align-content: center; padding-block: var(--section); }
 .bientot .accent { font-size: clamp(2rem, 1.6rem + 2vw, 3.2rem); display: block; margin-bottom: 0.2em; }
 .bientot p { font-size: 1.15rem; margin-top: 1em; }
-.section--forte .circuit .accent { color: var(--orange); }
+.section--forte .circuit .accent { color: var(--orange-accent); }
+
+/* =====================================================================
+   Mouvement
+   Idée directrice : le site se découvre « de l'intérieur ». La photo
+   d'ouverture s'ouvre comme une entrée de cénote, et chaque mot en
+   Satisfy s'écrit de gauche à droite quand sa section arrive.
+   Tout est visible par défaut : les états cachés ne s'appliquent que
+   si le JavaScript a démarré (classe .js sur <html>).
+   ===================================================================== */
+
+/* Entrée du haut de page */
+.js .heros__cadre { animation: ouverture 1.1s var(--sortie) both; }
+.js .heros__texte h1 { animation: monter 0.9s var(--sortie) 0.25s both; }
+.js .heros__texte h1 .accent { animation: ecrire 1.1s cubic-bezier(0.65, 0, 0.35, 1) 0.75s both; }
+.js .heros__sous-titre { animation: monter 0.8s var(--sortie) 0.45s both; }
+.js .heros__actions { animation: monter 0.8s var(--sortie) 0.6s both; }
+.js .whatsapp-flottant { animation: surgir 0.6s var(--sortie) 1.4s both; }
+@keyframes ouverture {
+  from { clip-path: inset(6% 5% 6% 5% round 48px); }
+  to { clip-path: inset(0 0 0 0 round var(--rayon)); }
+}
+@keyframes monter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes ecrire { from { clip-path: inset(-20% 100% -30% 0); } to { clip-path: inset(-20% -5% -30% 0); } }
+@keyframes surgir { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: none; } }
+.accent { display: inline-block; padding-inline: 0.04em 0.12em; }
+
+/* Apparition au défilement */
+.js [data-apparition] {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.8s var(--sortie), transform 0.9s var(--sortie);
+  transition-delay: calc(var(--rang, 0) * 90ms);
+}
+.js [data-apparition].est-visible { opacity: 1; transform: none; }
+.js [data-apparition] .accent { clip-path: inset(-20% 100% -30% 0); transition: clip-path 1.1s cubic-bezier(0.65, 0, 0.35, 1) 0.3s; }
+.js [data-apparition].est-visible .accent { clip-path: inset(-20% -5% -30% 0); }
+
+/* En-tête : se resserre au défilement */
+.entete { transition: box-shadow 0.4s var(--sortie), background-color 0.4s; }
+.entete__barre { transition: min-height 0.4s var(--sortie); }
+.entete__logo img { transition: width 0.4s var(--sortie); }
+.entete.est-compacte { box-shadow: 0 10px 30px -18px rgb(var(--voile) / 0.45); }
+@media (min-width: 901px) {
+  .entete.est-compacte .entete__barre { min-height: 64px; }
+  .entete.est-compacte .entete__logo img { width: 104px; }
+}
+
+/* Cartes qui se soulèvent au survol (souris uniquement) */
+@media (hover: hover) {
+  .circuit, .avis__carte { transition: transform 0.5s var(--sortie), box-shadow 0.5s var(--sortie); }
+  .circuit:hover { transform: translateY(-6px); box-shadow: 0 30px 50px -24px rgb(var(--voile) / 0.5); }
+  .avis__carte:hover { transform: translateY(-4px); box-shadow: 0 22px 40px -24px rgb(var(--voile) / 0.4); }
+  .js [data-apparition].est-visible.circuit:hover { transform: translateY(-6px); }
+  .acces__bloc { transition: transform 0.5s var(--sortie), box-shadow 0.5s var(--sortie); }
+  .acces__bloc:hover { box-shadow: 0 30px 50px -24px rgb(var(--voile) / 0.6); }
+  .js [data-apparition].est-visible.acces__bloc:hover { transform: translateY(-6px); }
+  .carte__item { border-radius: var(--rayon-petit); transition: background-color 0.35s, box-shadow 0.45s var(--sortie), transform 0.45s var(--sortie); }
+  .carte__item:hover { background: var(--carte); transform: translateY(-3px); box-shadow: 0 16px 30px -22px rgb(var(--voile) / 0.5); }
+}
+.carte__item { padding-inline: 14px; margin-inline: -14px; }
+
+/* FAQ : ouverture en douceur (navigateurs récents ; ailleurs, ouverture immédiate) */
+.faq details::details-content {
+  block-size: 0; overflow: hidden;
+  transition: block-size 0.45s var(--sortie), content-visibility 0.45s allow-discrete;
+}
+.faq details[open]::details-content { block-size: auto; }
+:root { interpolate-size: allow-keywords; }
+
+/* ---------- Organisation : l'essentiel ---------- */
+.essentiel { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(28px, 4vw, 56px) clamp(32px, 6vw, 96px); margin: 0; }
+.essentiel dt { font-family: var(--titre); font-weight: 700; font-variation-settings: "SOFT" 100, "WONK" 1; font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem); color: var(--marque); margin-bottom: 8px; }
+.essentiel dd { margin: 0; max-width: 52ch; }
+@media (max-width: 760px) { .essentiel { grid-template-columns: 1fr; } }
+
+/* ---------- Organisation : vos envies (la photo change selon l'envie) ---------- */
+.envies { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(28px, 5vw, 80px); align-items: center; }
+.envies h2 { margin-bottom: 0.6em; }
+.envies__liste { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgb(251 246 238 / 0.22); }
+:root[data-palette] .envies__liste { border-color: rgb(var(--ligne) / 0.2); }
+.envies__liste li { border-bottom: 1px solid rgb(251 246 238 / 0.22); }
+:root[data-palette] .envies__liste li { border-color: rgb(var(--ligne) / 0.2); }
+.envies__bouton {
+  width: 100%; display: grid; gap: 4px; padding: 18px 0; text-align: left; cursor: pointer;
+  background: none; border: 0; color: inherit; font: inherit;
+}
+.envies__nom {
+  font-family: var(--titre); font-weight: 700; font-variation-settings: "SOFT" 100, "WONK" 1;
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 2rem); line-height: 1.1;
+  opacity: 0.8; transition: opacity 0.3s, transform 0.5s var(--sortie), color 0.3s;
+}
+.envies__detail { font-size: 0.95rem; color: var(--sur-forte-doux); max-width: 46ch; }
+.envies__bouton[aria-pressed="true"] .envies__nom { opacity: 1; transform: translateX(10px); color: var(--accent-sur-forte); }
+.envies__bouton:hover .envies__nom { opacity: 1; }
+.envies__scene { position: relative; aspect-ratio: 4 / 5; border-radius: var(--rayon); overflow: hidden; box-shadow: var(--ombre); background: var(--profonde); }
+.envies__scene > * {
+  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+  opacity: 0; clip-path: inset(0 0 0 100%);
+  transition: opacity 0.5s var(--sortie), clip-path 0.9s var(--sortie);
+}
+.envies__scene > .est-active { opacity: 1; clip-path: inset(0 0 0 0); z-index: 1; }
+.envies__attente { display: grid; place-content: center; text-align: center; gap: 8px; background: var(--fond-doux); color: var(--marque); }
+.envies__attente .accent { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); color: var(--orange-texte); }
+.envies__attente small { font-weight: 600; letter-spacing: 0.02em; }
+@media (max-width: 860px) {
+  .envies { grid-template-columns: 1fr; }
+  .envies__scene { order: -1; aspect-ratio: 16 / 10; }
+}
+
+/* ---------- Organisation : itinéraire, salsa, étapes ---------- */
+.itineraire { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; counter-reset: etape; }
+.itineraire li {
+  counter-increment: etape; display: inline-flex; align-items: center; gap: 10px;
+  padding: 10px 18px 10px 10px; border-radius: 999px; background: var(--carte); border: 1px solid rgb(var(--ligne) / 0.14);
+  font-weight: 600; color: var(--marque);
+}
+.itineraire li::before {
+  content: counter(etape); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
+  background: var(--forte); color: var(--sur-forte); font-size: 0.85rem;
+}
+.salsa { display: grid; grid-template-columns: auto 1fr; gap: clamp(24px, 6vw, 96px); align-items: center; }
+.salsa p { font-size: 1.12rem; margin: 0; }
+@media (max-width: 760px) { .salsa { grid-template-columns: 1fr; } }
+.etapes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); counter-reset: etape; }
+.etapes li { counter-increment: etape; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; padding-top: 22px; border-top: 2px solid var(--marque); }
+.etapes li::before { content: counter(etape); font-family: var(--titre); font-weight: 800; font-size: 3.2rem; line-height: 1; color: var(--orange); }
+.etapes p { margin: 0; font-size: 1.1rem; font-weight: 500; }
+@media (max-width: 760px) { .etapes { grid-template-columns: 1fr; } }
+
+/* ---------- Réduire les animations ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .js .heros__cadre, .js .heros__texte h1, .js .heros__texte h1 .accent,
+  .js .heros__sous-titre, .js .heros__actions, .js .whatsapp-flottant, .heros__cadre img { animation: none; }
+  .js [data-apparition] { transform: none; transition: opacity 0.4s linear; transition-delay: 0s; }
+  .js [data-apparition] .accent { clip-path: none; transition: none; }
+  .envies__scene > * { clip-path: none; transition: opacity 0.3s linear; }
+  .circuit:hover, .avis__carte:hover, .carte__item:hover,
+  .js [data-apparition].est-visible.circuit:hover,
+  .js [data-apparition].est-visible.acces__bloc:hover { transform: none; }
+  .faq details::details-content { transition: none; }
+}
+.avis.est-en-pause .avis__piste { animation-play-state: paused; }

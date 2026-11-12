@@ -1,5 +1,5 @@
 // Toh Tours Yucatán : petit script partagé
-// (menu mobile, détails des circuits, activités à la carte, défilement des avis)
+// (menu, apparitions, détails des circuits, activités à la carte, vos envies, défilement des avis)
 (function () {
   var reduit = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -86,4 +86,54 @@
     piste.style.setProperty("--duree", Math.round(serie / 30) + "s");
     bande.classList.add("est-anime");
   });
+
+  // Apparition progressive des sections et des cartes au défilement
+  var aApparaitre = document.querySelectorAll("[data-apparition]");
+  if ("IntersectionObserver" in window) {
+    aApparaitre.forEach(function (el) {
+      // Décalage léger entre éléments voisins (cartes d'une même rangée)
+      var freres = Array.prototype.filter.call(el.parentElement.children, function (c) { return c.hasAttribute("data-apparition"); });
+      el.style.setProperty("--rang", Math.min(freres.indexOf(el), 3));
+    });
+    var observateur = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("est-visible"); observateur.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+    aApparaitre.forEach(function (el) { observateur.observe(el); });
+  } else {
+    aApparaitre.forEach(function (el) { el.classList.add("est-visible"); });
+  }
+
+  // En-tête qui se resserre une fois la page défilée
+  var entete = document.querySelector(".entete");
+  if (entete) {
+    var majEntete = function () { entete.classList.toggle("est-compacte", window.scrollY > 24); };
+    window.addEventListener("scroll", majEntete, { passive: true });
+    majEntete();
+  }
+
+  // Vos envies : la grande photo change selon l'envie survolée (ou touchée sur téléphone)
+  document.querySelectorAll("[data-envies]").forEach(function (bloc) {
+    var boutons = bloc.querySelectorAll(".envies__bouton");
+    var vues = bloc.querySelectorAll(".envies__scene > *");
+    var choisir = function (i) {
+      boutons.forEach(function (b, j) { b.setAttribute("aria-pressed", i === j ? "true" : "false"); });
+      vues.forEach(function (v, j) { v.classList.toggle("est-active", i === j); });
+    };
+    boutons.forEach(function (b, i) {
+      b.addEventListener("click", function () { choisir(i); });
+      b.addEventListener("mouseenter", function () { if (window.matchMedia("(hover: hover)").matches) choisir(i); });
+      b.addEventListener("focus", function () { choisir(i); });
+    });
+    choisir(0);
+  });
+
+  // Les avis ne défilent que lorsqu'ils sont à l'écran
+  if ("IntersectionObserver" in window) {
+    var obsAvis = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (e) { e.target.classList.toggle("est-en-pause", !e.isIntersecting); });
+    });
+    document.querySelectorAll("[data-defilement]").forEach(function (b) { obsAvis.observe(b); });
+  }
 })();

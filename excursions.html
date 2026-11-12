@@ -10,6 +10,7 @@
   <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add("js")</script>
   <meta property="og:title" content="Toh Tours Yucatán">
   <meta property="og:description" content="Le Yucatán maya, vécu de l'intérieur. Excursions, voyages sur mesure, réceptif.">
   <meta property="og:image" content="assets/img/yalcoba_cenote_xcanahaltun_02-1600.webp">
@@ -60,7 +61,7 @@
 
     <section class="section section--forte" id="circuits" aria-label="Les circuits">
       <div class="conteneur circuits">
-        <article class="circuit">
+        <article class="circuit" data-apparition>
           <div class="circuit__photo"><img src="assets/img/yalcoba_melipona_workshop_01-800.webp" srcset="assets/img/yalcoba_melipona_workshop_01-800.webp 800w, assets/img/yalcoba_melipona_workshop_01-1600.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" loading="lazy" alt="Dégustation de miel de mélipone versé dans la main" width="800" height="533"></div>
           <div class="circuit__corps">
             <h2 class="h3">Demi-journée <span class="accent">Essentiel</span></h2>
@@ -85,7 +86,7 @@
             </div>
           </div>
         </article>
-        <article class="circuit">
+        <article class="circuit" data-apparition>
           <div class="circuit__photo"><img src="assets/img/yalcoba_cooking_workshop_03-800.webp" srcset="assets/img/yalcoba_cooking_workshop_03-800.webp 800w, assets/img/yalcoba_cooking_workshop_03-1600.webp 1600w" sizes="(max-width: 860px) 100vw, 50vw" loading="lazy" alt="Préparation des tortillas sur le comal, au feu de bois" width="800" height="1067"></div>
           <div class="circuit__corps">
             <h2 class="h3">Journée complète <span class="accent">Immersion</span></h2>
@@ -118,11 +119,11 @@
 
     <section class="section section--creme" id="a-la-carte" aria-labelledby="titre-carte">
       <div class="conteneur">
-        <div class="section__entete">
+        <div class="section__entete" data-apparition>
           <h2 id="titre-carte">Activités à la <span class="accent">carte</span></h2>
           <p>Toutes privées, à partir de 2 personnes. Tarif sur devis.</p>
         </div>
-        <div class="carte" data-carte>
+        <div class="carte" data-carte data-apparition>
           <div class="carte__scene" aria-hidden="true">
             <img src="assets/img/yalcoba_cenote_xcanahaltun_04-800.webp" srcset="assets/img/yalcoba_cenote_xcanahaltun_04-800.webp 800w, assets/img/yalcoba_cenote_xcanahaltun_04-1600.webp 1600w" sizes="45vw" loading="lazy" alt="Baigneurs dans le cénote Xcanahaltun, sous les stalactites" width="800" height="1067">
             <img src="assets/img/yalcoba_melipona_03-800.webp" srcset="assets/img/yalcoba_melipona_03-800.webp 800w, assets/img/yalcoba_melipona_03-1600.webp 1600w" sizes="45vw" loading="lazy" alt="L'intérieur d'une ruche d'abeilles mélipones et ses pots de miel" width="800" height="1067">
@@ -245,11 +246,11 @@
 
     <section class="section" aria-labelledby="titre-avis">
       <div class="conteneur">
-        <div class="section__entete">
+        <div class="section__entete" data-apparition>
           <h2 id="titre-avis">Avis de <span class="accent">voyageurs</span></h2>
         </div>
       </div>
-      <div class="avis" data-defilement>
+      <div class="avis" data-defilement data-apparition>
         <div class="avis__piste">
             <figure class="avis__carte">
               <blockquote><p>Coline est une guide formidable, passionnée et adorable. Nous avons passé une excellente journée à ses côtés, riche en découvertes, bons plans et en bons moments. Une expérience que nous recommandons vivement ! Merci Coline !</p></blockquote>
@@ -269,55 +270,55 @@
 
     <section class="section section--creme" id="faq" aria-labelledby="titre-faq">
       <div class="conteneur">
-        <div class="section__entete">
+        <div class="section__entete" data-apparition>
           <h2 id="titre-faq">Questions <span class="accent">fréquentes</span></h2>
         </div>
-        <div class="faq">
-          <details>
+        <div class="faq" data-apparition>
+          <details name="faq">
             <summary>Où se trouve Yalcobá et comment s'y rendre ?</summary>
             <div><p>Yalcobá est un village maya à 30 minutes de Valladolid, 1 h 30 de Tulum et 2 h 20 de Cancún et de Mérida. C'est une belle étape à associer à Ek Balam (30 minutes) ou à Chichén Itzá (1 h 10). Le transport n'est pas inclus, le plus simple est de venir en voiture. Le lieu de rendez-vous exact vous est envoyé dès que votre réservation est confirmée.</p></div>
           </details>
-          <details>
+          <details name="faq">
             <summary>Les excursions sont-elles privées ?</summary>
             <div><p>Oui, toujours. Vous vivez l'expérience avec vos proches, sans groupe mélangé. Nous partons à partir de 2 personnes, et jusqu'à 15 (10 pour les ateliers de cuisine et d'artisanat).</p></div>
           </details>
-          <details>
+          <details name="faq">
             <summary>Dans quelles langues se déroulent les visites ?</summary>
             <div><p>En français, en anglais ou en espagnol. Votre guide traduit chaque échange avec les familles qui vous accueillent, pour que la rencontre soit aussi simple que chaleureuse.</p></div>
           </details>
-          <details>
+          <details name="faq">
             <summary>Que comprend le prix ?</summary>
             <div><p>Il comprend l'accompagnement par votre guide, la coordination de l'expérience, les activités chez les familles, l'entrée au cénote, le repas et tout le matériel des ateliers. Seuls le transport et les pourboires ne sont pas inclus.</p></div>
           </details>
-          <details>
+          <details name="faq">
             <summary>Quelle différence entre la visite des ruches et l'atelier savon ?</summary>
             <div><p>Les deux se vivent avec Maritza, qui s'occupe des abeilles mélipones de la communauté. Ces abeilles n'ont pas de dard, vous pouvez donc les approcher sans crainte.</p><p>La visite des ruches est la découverte complète : Maritza vous raconte la vie de la colonie, puis ouvre une ruche (si la météo le permet) pour que vous en observiez l'intérieur, avant une dégustation de miel ou de pollen.</p><p>L'atelier savon met la main à la pâte : vous fabriquez votre propre savon au miel de mélipone, que vous emportez en souvenir. Il commence par une courte présentation des abeilles et une dégustation de miel, plus succincte que la visite complète, et sans ouverture de ruche.</p></div>
           </details>
-          <details>
+          <details name="faq">
             <summary>Les enfants sont-ils les bienvenus ?</summary>
             <div><p>Avec grand plaisir ! Toutes nos activités leur sont adaptées, et l'atelier d'artisanat fait souvent le bonheur des familles. Les enfants de moins de 2 ans ne paient pas. À partir de 2 ans, le tarif est le même pour tous, enfant ou adulte.</p></div>
           </details>
-          <details>
+          <details name="faq">
             <summary>Quel cénote choisir ?</summary>
             <div><p>Vous avez le choix entre deux cénotes aux ambiances différentes. <strong>Xcanahaltun</strong> est semi-ouvert, avec une eau turquoise et des vestiaires, des douches, des toilettes et des casiers : parfait pour une première fois. <strong>Chaachab</strong> est un peu plus sauvage : la lumière y entre par plusieurs ouvertures, avec de très beaux rayons de soleil entre 11 h et 14 h. Dans les deux, le gilet de sauvetage est facultatif.</p></div>
           </details>
-          <details>
+          <details name="faq">
             <summary>Quel niveau physique faut-il ?</summary>
             <div><p>Nos deux circuits sont de niveau facile et accessibles à presque tous. Si vous ajoutez la randonnée dans la jungle ou la visite de la milpa à un circuit sur mesure, comptez un peu plus d'efforts : le terrain est irrégulier et la chaleur peut se faire sentir.</p></div>
           </details>
-          <details>
+          <details name="faq">
             <summary>Que faut-il apporter ?</summary>
             <div><p>Des vêtements légers et confortables, de la crème solaire et de l'anti-moustique. Pour le cénote, prévoyez maillot de bain, serviette, chaussures d'eau et, si vous en avez, un masque. Pour la randonnée et la milpa, pensez au pantalon long, aux manches longues, aux chaussures fermées, au chapeau et à une bouteille d'eau.</p></div>
           </details>
-          <details>
+          <details name="faq">
             <summary>Y a-t-il une option végétarienne ?</summary>
             <div><p>Bien sûr. Il suffit de nous le dire au moment de la réservation, ainsi que toute allergie ou régime particulier, afin que la famille prépare le repas en conséquence.</p></div>
           </details>
-          <details>
+          <details name="faq">
             <summary>Dois-je acheter des produits sur place ?</summary>
             <div><p>Pas du tout. À la fin de la visite, Maritza présente simplement ce qu'elle fabrique (miel, savons, crèmes), librement et sans aucune obligation d'achat.</p></div>
           </details>
-          <details>
+          <details name="faq">
             <summary>Comment réserver, et que se passe-t-il en cas d'annulation ?</summary>
             <div><p>Écrivez-nous sur WhatsApp au <a href="https://wa.me/529851060333">+52 985 106 0333</a> en précisant la date souhaitée, l'heure, le nombre de personnes, l'âge des enfants, vos allergies et les activités qui vous tentent. Un acompte confirme la réservation. En cas d'annulation, vous êtes remboursé à 100 % plus de 30 jours avant, à 50 % entre 30 et 14 jours avant, et nous ne pouvons pas rembourser à moins de 14 jours. Des circuits sur mesure sont aussi possibles.</p></div>
           </details>
@@ -328,7 +329,7 @@
 
   <footer class="contact" id="contact" aria-labelledby="titre-contact">
     <div class="conteneur">
-      <div class="contact__grille">
+      <div class="contact__grille" data-apparition>
         <div>
           <h2 id="titre-contact">Contact</h2>
           <p class="contact__intro">Écrivez-nous sur WhatsApp en précisant la date souhaitée, le nombre de personnes et les activités qui vous tentent.</p>
