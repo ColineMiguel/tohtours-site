@@ -14,7 +14,7 @@ Site statique en HTML/CSS, sans framework : un fichier `.html` par onglet, une f
 
 - **Voyageurs francophones** (couples, familles avec enfants, petits groupes d'amis), avec une voiture, logés à Valladolid ou venant en excursion depuis Tulum, Cancún ou Mérida. Ils cherchent une expérience privée et authentique, souvent sur téléphone, pendant le voyage ou juste avant.
 - **Voyageurs qui préparent un séjour** de 1 à 3 semaines dans la péninsule du Yucatán et veulent un voyage sur mesure, accompagné en français.
-- **Professionnels du voyage** (onglet Réceptif) : agences de voyage, travel planners, écoles de danse, qui cherchent un partenaire local pour leurs voyageurs.
+- **Professionnels du voyage** (onglet Réceptif) : agences de voyage et travel planners, qui cherchent un partenaire local pour leurs voyageurs.
 
 ## Product Purpose
 

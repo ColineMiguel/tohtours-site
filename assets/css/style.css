@@ -559,3 +559,11 @@ p { margin: 0 0 1em; max-width: 68ch; }
   .faq details::details-content { transition: none; }
 }
 .avis.est-en-pause .avis__piste { animation-play-state: paused; }
+
+/* Photos ajoutées le 12/11 */
+.histoire__photo--portrait img { object-position: 50% 25%; }
+.heros__cadre img.heros__img--lagune { object-position: 50% 62%; }
+.bientot--photo { grid-template-columns: 1fr 0.9fr; gap: clamp(28px, 6vw, 96px); align-items: center; }
+.bientot__photo { margin: 0; border-radius: var(--rayon); overflow: hidden; aspect-ratio: 4 / 5; box-shadow: var(--ombre); }
+.bientot__photo img { width: 100%; height: 100%; object-fit: cover; }
+@media (max-width: 860px) { .bientot--photo { grid-template-columns: 1fr; } .bientot__photo { aspect-ratio: 4 / 3; order: -1; } }
