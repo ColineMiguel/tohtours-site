@@ -20,10 +20,10 @@ Une immersion courte mais complète au cœur de Yalcobá, entre nature, culture 
 Une journée pour vivre au rythme du village, entre cuisine, nature et savoir-faire traditionnels, au contact de plusieurs familles de la communauté.
 
 - **9 h** : atelier de cuisine traditionnelle avec une famille (recado, tortillas faites à la main)
-- **11 h** : découverte des abeilles mélipones et dégustation de miel
-- **12 h 30** : baignade au cénote Xcanahaltun ou Chaachab
-- **14 h** : repas préparé pendant l'atelier
-- **15 h 30** : atelier d'artisanat avec les artisanes du village (attrape-rêves ou bracelet)
+- **10 h** : découverte des abeilles mélipones et dégustation de miel
+- **11 h** : baignade au cénote Xcanahaltun ou Chaachab
+- **12 h 30** : repas préparé pendant l'atelier
+- **14 h** : atelier d'artisanat avec les artisanes du village (attrape-rêves ou bracelet)
 - **16 h** : fin de l'excursion
 
 Horaires indicatifs, l'ordre peut être adapté à la météo et à vos envies.
