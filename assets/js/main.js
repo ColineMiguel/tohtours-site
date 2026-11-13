@@ -129,6 +129,38 @@
     choisir(0);
   });
 
+  // Itinéraire : la carte et la liste des étapes se répondent
+  document.querySelectorAll("[data-itineraire]").forEach(function (bloc) {
+    var etapes = bloc.querySelectorAll(".itin__etape");
+    var marques = bloc.querySelectorAll(".itin__pin, .itin__point");
+    var etiquette = bloc.querySelector(".itin__etiquette");
+    bloc.querySelectorAll(".itin__pin").forEach(function (pin, i) { pin.style.setProperty("--i", i); });
+    var choisir = function (n) {
+      etapes.forEach(function (b) {
+        var actif = b.dataset.etape === n;
+        b.classList.toggle("est-actif", actif);
+        b.setAttribute("aria-pressed", actif ? "true" : "false");
+        if (actif && b.dataset.x) {
+          etiquette.textContent = b.textContent.replace(/^\s*\d+\s*/, "");
+          etiquette.style.setProperty("--ex", b.dataset.x + "%");
+          etiquette.style.setProperty("--ey", b.dataset.y + "%");
+        }
+        if (actif) etiquette.classList.toggle("est-visible", !!b.dataset.x);
+      });
+      marques.forEach(function (m) { m.classList.toggle("est-actif", m.dataset.etape === n); });
+    };
+    etapes.forEach(function (b) {
+      b.setAttribute("aria-pressed", "false");
+      b.addEventListener("click", function () { choisir(b.dataset.etape); });
+      b.addEventListener("focus", function () { choisir(b.dataset.etape); });
+      b.addEventListener("mouseenter", function () { if (window.matchMedia("(hover: hover)").matches) choisir(b.dataset.etape); });
+    });
+    bloc.querySelectorAll(".itin__pin").forEach(function (pin) {
+      pin.addEventListener("click", function () { choisir(pin.dataset.etape); });
+      pin.addEventListener("mouseenter", function () { choisir(pin.dataset.etape); });
+    });
+  });
+
   // Les avis ne défilent que lorsqu'ils sont à l'écran
   if ("IntersectionObserver" in window) {
     var obsAvis = new IntersectionObserver(function (entrees) {

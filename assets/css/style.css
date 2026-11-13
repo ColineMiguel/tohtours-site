@@ -29,11 +29,15 @@
   --accent-texte: #17716b;    /* turquoise assez foncé pour du texte sur fond clair */
   --mot-script: #c0582f;          /* terre cuite : mots en Satisfy sur fond clair */
   --mot-script-fonce: #f2a65a; /* mots en Satisfy sur fond foncé ou sur photo */
+  --terre: #b9502a;           /* boutons terre cuite (même teinte que les mots en Satisfy) */
+  --terre-survol: #a5461f;
+  --sur-terre: #fbf6ee;
   --sur-accent: #163a3b;      /* texte sur les boutons turquoise */
   --focus: #17716b;           /* contour clavier sur fond clair */
 
   --fond: #f8f5ef;            /* fond de page */
   --fond-doux: #f2ede3;       /* crème de la charte : sections alternées */
+  --fond-cenote: #dde9e4;     /* bleu cénote très clair : sections alternées */
   --carte: #fdfbf7;           /* fond des cartes */
   --encre: #1f2b2b;           /* texte courant */
   --encre-douce: #4f5d5c;     /* texte secondaire */
@@ -133,6 +137,8 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .bouton--whatsapp { background: var(--accent); color: var(--sur-accent); box-shadow: 0 10px 24px -12px rgb(22 58 59 / 0.8); }
 .bouton--whatsapp:hover { background: var(--accent-clair); transform: translateY(-2px); box-shadow: 0 16px 30px -14px rgb(22 58 59 / 0.9); }
 .bouton--contour { border-color: currentColor; }
+.bouton--terre { background: var(--terre); color: var(--sur-terre); box-shadow: 0 10px 24px -12px rgb(120 45 15 / 0.7); }
+.bouton--terre:hover { background: var(--terre-survol); transform: translateY(-2px); box-shadow: 0 16px 30px -14px rgb(120 45 15 / 0.8); }
 .bouton--contour:hover { background: rgb(255 255 255 / 0.14); transform: translateY(-2px); }
 .bouton--contour-fonce { border-color: rgb(var(--ligne) / 0.35); color: var(--marque); }
 .bouton--contour-fonce:hover { border-color: var(--marque); }
@@ -191,13 +197,13 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .whatsapp-flottant svg { width: 30px; height: 30px; }
 
 /* ---------- Héros ---------- */
-.heros { position: relative; padding-top: clamp(12px, 2vw, 24px); }
-.heros::before { content: ""; position: absolute; inset: 0 0 32% 0; background: var(--forte); z-index: -1; }
+/* Photo d'ouverture en pleine largeur, d'un bord à l'autre de l'écran */
+.heros { position: relative; }
+.heros > .conteneur { width: 100%; max-width: none; }
 .heros__cadre {
-  position: relative; overflow: hidden; border-radius: var(--rayon);
-  min-height: clamp(520px, 78vh, 760px);
+  position: relative; overflow: hidden;
+  min-height: clamp(540px, 88vh, 860px);
   display: grid; align-items: end;
-  box-shadow: var(--ombre);
 }
 .heros__cadre img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; animation: respiration 2.4s var(--sortie) both; }
 .heros__cadre img.heros__img--droite { object-position: 72% 40%; }
@@ -205,11 +211,14 @@ p { margin: 0 0 1em; max-width: 68ch; }
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(180deg, rgb(var(--voile) / 0.1) 0%, rgb(var(--voile) / 0.35) 40%, rgb(var(--voile) / 0.88) 100%);
 }
-.heros__texte { position: relative; z-index: 1; padding: clamp(24px, 5vw, 64px); color: var(--sur-forte); }
+.heros__texte {
+  position: relative; z-index: 1; color: var(--sur-forte);
+  /* le texte reste aligné sur la grille du reste de la page */
+  padding: clamp(32px, 6vw, 96px) max(var(--gouttiere), (100% - var(--largeur)) / 2);
+}
 .heros__texte h1 { max-width: 13ch; }
 .heros__sous-titre { font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem); font-weight: 500; margin: 0.9em 0 1.6em; max-width: 40ch; }
 .heros__actions { display: flex; flex-wrap: wrap; gap: 12px; }
-.heros__credit { position: absolute; right: 16px; bottom: 10px; z-index: 1; font-size: 0.7rem; color: rgb(242 237 227 / 0.75); }
 @keyframes respiration { from { transform: scale(1.06); } to { transform: scale(1); } }
 @media (max-width: 760px) {
   .heros__cadre::after { background: linear-gradient(180deg, rgb(var(--voile) / 0.25) 0%, rgb(var(--voile) / 0.6) 35%, rgb(var(--voile) / 0.92) 100%); }
@@ -219,6 +228,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .section { padding-block: var(--section); }
 .section--forte { background: var(--forte); color: var(--sur-forte); }
 .section--creme { background: var(--fond-doux); }
+.section--cenote { background: var(--fond-cenote); }
 .section__entete { margin-bottom: clamp(32px, 5vw, 64px); }
 .section__entete p { margin-top: 1em; font-size: 1.1rem; color: var(--encre-douce); }
 
@@ -258,6 +268,38 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .histoire .histoire__signature { font-family: var(--script); font-size: 2.6rem; color: var(--accent); line-height: 1; margin-top: 0.3em; }
 .section--forte .accent, .section--forte .histoire__signature { color: var(--mot-script-fonce); }
 @media (max-width: 860px) { .histoire { grid-template-columns: 1fr; } .histoire__photo { aspect-ratio: 4 / 3; } }
+
+/* ---------- Qui sommes-nous (accueil) ---------- */
+.surtitre { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin: 0 0 0.9em; color: var(--accent-texte); }
+.section--forte .surtitre { color: var(--accent); }
+.qui__intro { text-align: center; max-width: 920px; margin: 0 auto clamp(40px, 6vw, 80px); }
+.qui__intro h2 { font-size: clamp(2.1rem, 1.3rem + 3vw, 3.8rem); text-wrap: balance; }
+.qui__fondatrice { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(32px, 6vw, 96px); align-items: center; }
+.qui__fondatrice h3 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); color: var(--accent); margin-bottom: 0.6em; }
+.qui__fondatrice p { font-size: 1.08rem; color: var(--sur-forte-doux); }
+.qui .histoire__signature { font-family: var(--script); font-size: 2.6rem; line-height: 1; margin-top: 0.3em; }
+.mission { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 6vw, 96px); align-items: center; }
+.mission h2 { margin-bottom: 0.6em; }
+.mission p { font-size: 1.08rem; }
+.mission__offres { list-style: none; margin: 28px 0 0; padding: 0; border-top: 1px solid rgb(var(--ligne) / 0.18); }
+.mission__offres a { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 4px; border-bottom: 1px solid rgb(var(--ligne) / 0.18); font-weight: 700; color: var(--marque); text-decoration: none; transition: padding 0.4s var(--sortie), color 0.25s; }
+.mission__offres a:hover { padding-left: 12px; color: var(--mot-script); }
+.mosaique { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.mosaique img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 3 / 2; border-radius: var(--rayon-petit); box-shadow: var(--ombre); }
+.mosaique .mosaique__grande { grid-column: span 2; aspect-ratio: 16 / 10; border-radius: var(--rayon); }
+.valeurs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); counter-reset: valeur; }
+.valeurs li { counter-increment: valeur; padding: clamp(22px, 2.6vw, 32px); border-radius: var(--rayon-carte); background: var(--carte); border: 1px solid rgb(var(--ligne) / 0.1); }
+.valeurs li::before { content: "0" counter(valeur); display: block; font-family: var(--titre); font-weight: 800; font-size: 2.2rem; line-height: 1; color: var(--mot-script); margin-bottom: 18px; }
+.valeurs h3 { font-size: 1.25rem; color: var(--marque); margin-bottom: 0.5em; }
+.valeurs p { margin: 0; color: var(--encre-douce); }
+@media (hover: hover) {
+  .valeurs li { transition: transform 0.5s var(--sortie), box-shadow 0.5s var(--sortie); }
+  .valeurs li:hover { transform: translateY(-6px); box-shadow: 0 26px 44px -26px rgb(var(--voile) / 0.5); }
+  .js .valeurs li[data-apparition].est-visible:hover { transform: translateY(-6px); }
+}
+@media (max-width: 1000px) { .valeurs { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 860px) { .qui__fondatrice, .mission { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .valeurs { grid-template-columns: 1fr; } }
 
 /* ---------- Avis : défilement de droite à gauche ---------- */
 .avis { overflow: hidden; padding-block: 8px 24px; }
@@ -422,8 +464,8 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .js .heros__actions { animation: monter 0.8s var(--sortie) 0.6s both; }
 .js .whatsapp-flottant { animation: surgir 0.6s var(--sortie) 1.4s both; }
 @keyframes ouverture {
-  from { clip-path: inset(6% 5% 6% 5% round 48px); }
-  to { clip-path: inset(0 0 0 0 round var(--rayon)); }
+  from { clip-path: inset(4% 4% 4% 4% round 40px); }
+  to { clip-path: inset(0 0 0 0 round 0); }
 }
 @keyframes monter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
 @keyframes ecrire { from { clip-path: inset(-20% 100% -30% 0); } to { clip-path: inset(-20% -5% -30% 0); } }
@@ -511,24 +553,106 @@ p { margin: 0 0 1em; max-width: 68ch; }
 }
 
 /* ---------- Organisation : itinéraire, salsa, étapes ---------- */
-.itineraire { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; counter-reset: etape; }
-.itineraire li {
-  counter-increment: etape; display: inline-flex; align-items: center; gap: 10px;
-  padding: 10px 18px 10px 10px; border-radius: 999px; background: var(--carte); border: 1px solid rgb(var(--ligne) / 0.14);
-  font-weight: 600; color: var(--marque);
+/* Itinéraire : carte du Yucatán reliée à la liste des étapes */
+.itin { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(24px, 4vw, 56px); align-items: center; }
+.itin__cadre { position: relative; margin: 0; border-radius: var(--rayon); overflow: hidden; box-shadow: var(--ombre); background: #b9e0d9; }
+.itin__carte { display: block; width: 100%; height: auto; }
+.itin__mer { fill: #b9e0d9; }
+.itin__terre { fill: var(--fond); stroke: rgb(var(--ligne) / 0.55); stroke-width: 1.2; stroke-linejoin: round; }
+.itin__eau { font-family: var(--titre); font-style: italic; font-size: 19px; fill: var(--marque); opacity: 0.55; text-anchor: middle; }
+.itin__route { fill: none; stroke: var(--terre); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.itin__point { fill: var(--marque); stroke: var(--fond); stroke-width: 3; transition: fill 0.3s; }
+.itin__pin { transform: translate(var(--x), var(--y)); cursor: pointer; }
+.itin__pin circle { fill: var(--marque); stroke: var(--fond); stroke-width: 3; transition: fill 0.3s, r 0.3s var(--sortie); }
+.itin__pin text { fill: var(--sur-forte); font-family: var(--texte); font-weight: 700; font-size: 15px; text-anchor: middle; pointer-events: none; }
+.itin__pin.est-actif circle { fill: var(--terre); r: 22px; }
+.itin__point.est-actif { fill: var(--terre); }
+.itin__etiquette {
+  position: absolute; z-index: 1; left: var(--ex, 50%); top: var(--ey, 50%); transform: translate(-50%, calc(-100% - 26px));
+  padding: 8px 14px; border-radius: 999px; background: var(--marque); color: var(--sur-forte); font-weight: 600; font-size: 0.9rem;
+  white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity 0.25s, left 0.4s var(--sortie), top 0.4s var(--sortie);
 }
-.itineraire li::before {
-  content: counter(etape); display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%;
-  background: var(--forte); color: var(--sur-forte); font-size: 0.85rem;
+.itin__etiquette.est-visible { opacity: 1; }
+.itin__source { position: absolute; left: 12px; bottom: 8px; font-size: 0.68rem; color: rgb(var(--ligne) / 0.75); }
+.itin__liste { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.itin__etape {
+  display: flex; align-items: center; gap: 14px; width: 100%; padding: 9px 12px; border: 0; border-radius: var(--rayon-mini);
+  background: transparent; color: var(--marque); font: inherit; font-weight: 600; text-align: left; cursor: pointer;
+  transition: background-color 0.25s, transform 0.4s var(--sortie);
 }
+.itin__num {
+  flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--forte); color: var(--sur-forte); font-size: 0.85rem; transition: background-color 0.25s;
+}
+.itin__etape:hover, .itin__etape.est-actif { background: var(--carte); transform: translateX(4px); }
+.itin__etape.est-actif .itin__num { background: var(--terre); }
+.js .itin[data-apparition] .itin__route { stroke-dashoffset: 1; transition: stroke-dashoffset 3.2s cubic-bezier(0.45, 0, 0.25, 1) 0.4s; }
+.js .itin[data-apparition].est-visible .itin__route { stroke-dashoffset: 0; }
+.js .itin[data-apparition] .itin__pin circle { r: 0; }
+.js .itin[data-apparition].est-visible .itin__pin circle { r: 17px; transition: fill 0.3s, r 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) calc(0.4s + var(--i, 0) * 0.25s); }
+.js .itin[data-apparition].est-visible .itin__pin.est-actif circle { r: 22px; transition-delay: 0s; }
+@media (max-width: 860px) {
+  .itin { grid-template-columns: 1fr; }
+  .itin__liste { grid-template-columns: 1fr 1fr; }
+  .itin__etape { padding: 8px; gap: 10px; font-size: 0.9rem; }
+  .itin__eau { font-size: 24px; }
+  .itin__pin text { font-size: 20px; }
+  .itin__pin circle, .js .itin[data-apparition].est-visible .itin__pin circle { r: 22px; }
+  .itin__pin.est-actif circle, .js .itin[data-apparition].est-visible .itin__pin.est-actif circle { r: 27px; }
+}
+@media (max-width: 420px) { .itin__liste { grid-template-columns: 1fr; } }
 .salsa { display: grid; grid-template-columns: auto 1fr; gap: clamp(24px, 6vw, 96px); align-items: center; }
 .salsa p { font-size: 1.12rem; margin: 0; }
 @media (max-width: 760px) { .salsa { grid-template-columns: 1fr; } }
-.etapes { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); counter-reset: etape; }
-.etapes li { counter-increment: etape; display: flex; flex-direction: column; align-items: flex-start; gap: 18px; padding-top: 22px; border-top: 2px solid var(--marque); }
-.etapes li::before { content: counter(etape); font-family: var(--titre); font-weight: 800; font-size: 3.2rem; line-height: 1; color: var(--accent-texte); }
-.etapes p { margin: 0; font-size: 1.1rem; font-weight: 500; }
-@media (max-width: 760px) { .etapes { grid-template-columns: 1fr; } }
+/* En 3 étapes : frise reliée par un trait qui se dessine au défilement */
+.etapes { --pastille: 76px; list-style: none; margin: 0; padding: 0; position: relative; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(20px, 3vw, 40px); counter-reset: etape; }
+.etapes::before {
+  content: ""; position: absolute; top: calc(var(--pastille) / 2 - 1px); left: calc(var(--pastille) / 2); right: calc(33% - var(--pastille) / 2);
+  height: 2px; background: repeating-linear-gradient(90deg, var(--marque) 0 10px, transparent 10px 18px);
+  transform-origin: left; transform: scaleX(1);
+}
+.etapes li {
+  counter-increment: etape; position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: 16px;
+  padding: 0 clamp(8px, 1vw, 16px) 0 0;
+}
+.etapes__pastille {
+  position: relative; display: grid; place-items: center; width: var(--pastille); height: var(--pastille); border-radius: 50%;
+  background: var(--marque); color: var(--sur-forte); box-shadow: 0 0 0 8px var(--fond);
+}
+.etapes__pastille svg { width: 30px; height: 30px; }
+.etapes__pastille::after {
+  content: counter(etape); position: absolute; top: -6px; right: -10px; display: grid; place-items: center;
+  width: 32px; height: 32px; border-radius: 50%; background: var(--terre); color: var(--sur-terre);
+  font-family: var(--titre); font-weight: 800; font-size: 1.05rem; line-height: 1;
+}
+.etapes h3 { font-size: clamp(1.3rem, 1.1rem + 0.6vw, 1.6rem); margin: 6px 0 0; color: var(--marque); }
+.etapes p { margin: 0; font-size: 1.05rem; }
+@media (hover: hover) {
+  .etapes li .etapes__pastille { transition: transform 0.5s var(--sortie), background-color 0.3s; }
+  .etapes li:hover .etapes__pastille { transform: translateY(-4px) rotate(-6deg); background: var(--terre); }
+}
+.js .etapes[data-apparition]::before { transform: scaleX(0); transition: transform 1.4s cubic-bezier(0.65, 0, 0.35, 1) 0.2s; }
+.js .etapes[data-apparition].est-visible::before { transform: scaleX(1); }
+.js .etapes[data-apparition] li { opacity: 0; transform: translateY(24px); transition: opacity 0.7s var(--sortie), transform 0.7s var(--sortie); }
+.js .etapes[data-apparition].est-visible li { opacity: 1; transform: none; }
+.js .etapes[data-apparition].est-visible li:nth-child(2) { transition-delay: 0.45s; }
+.js .etapes[data-apparition].est-visible li:nth-child(3) { transition-delay: 0.9s; }
+.js .etapes[data-apparition] .etapes__pastille { transform: scale(0.4); transition: transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1); transition-delay: inherit; }
+.js .etapes[data-apparition].est-visible .etapes__pastille { transform: none; }
+@media (max-width: 760px) {
+  .etapes { grid-template-columns: 1fr; gap: 36px; --pastille: 64px; }
+  .etapes::before { display: none; }
+  .etapes li:not(:last-child)::after {
+    content: ""; position: absolute; left: calc(var(--pastille) / 2 - 1px); top: calc(var(--pastille) + 10px); bottom: -26px; width: 2px;
+    background: repeating-linear-gradient(180deg, var(--marque) 0 10px, transparent 10px 18px); transform-origin: top;
+  }
+  .js .etapes[data-apparition] li::after { transform: scaleY(0); transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.5s; }
+  .js .etapes[data-apparition].est-visible li::after { transform: scaleY(1); }
+  .etapes li { display: grid; grid-template-columns: var(--pastille) 1fr; column-gap: 18px; row-gap: 10px; align-items: start; }
+  .etapes li > :not(.etapes__pastille) { grid-column: 2; }
+  .etapes__pastille { grid-row: 1 / span 3; }
+  .etapes li .bouton { justify-self: start; }
+}
 
 /* ---------- Réduire les animations ---------- */
 @media (prefers-reduced-motion: reduce) {
@@ -541,6 +665,11 @@ p { margin: 0 0 1em; max-width: 68ch; }
   .js [data-apparition].est-visible.circuit:hover,
   .js [data-apparition].est-visible.acces__bloc:hover { transform: none; }
   .faq details::details-content { transition: none; }
+  .js .etapes[data-apparition]::before, .js .etapes[data-apparition] li, .js .etapes[data-apparition] li::after, .js .etapes[data-apparition] .etapes__pastille { transform: none; transition: opacity 0.4s linear; }
+  .etapes li:hover .etapes__pastille { transform: none; }
+  .js .itin[data-apparition] .itin__route { stroke-dashoffset: 0; transition: none; }
+  .js .itin[data-apparition] .itin__pin circle { r: 17px; transition: none; }
+  .itin__etape { transition: none; }
 }
 .avis.est-en-pause .avis__piste { animation-play-state: paused; }
 
@@ -556,7 +685,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 /* Arrondis hiérarchisés (validé par Coline le 12/11) :
    grandes photos = --rayon, blocs d'accès = 18px, cartes = --rayon-carte, vignettes = --rayon-mini */
 .acces__bloc { border-radius: 18px; }
-.circuit, .avis__carte, .itineraire li { border-radius: var(--rayon-carte); }
+.circuit, .avis__carte { border-radius: var(--rayon-carte); }
 .carte__item { border-radius: var(--rayon-mini); }
 .carte__detail .vignette { border-radius: var(--rayon-mini); }
 @media (max-width: 860px) {
