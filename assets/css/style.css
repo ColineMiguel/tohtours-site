@@ -13,9 +13,10 @@
   font-display: swap;
 }
 @font-face {
-  font-family: "Satisfy";
-  src: url("../fonts/satisfy.woff2") format("woff2");
-  font-weight: 400;
+  font-family: "Fraunces";
+  src: url("../fonts/fraunces-italic.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
   font-display: swap;
 }
 
@@ -27,9 +28,9 @@
   --accent: #3fb5ac;          /* turquoise de la raquette : boutons, puces, détails */
   --accent-clair: #5cc4bc;    /* survol des boutons turquoise */
   --accent-texte: #17716b;    /* turquoise assez foncé pour du texte sur fond clair */
-  --mot-script: #c0582f;          /* terre cuite : mots en Satisfy sur fond clair */
-  --mot-script-fonce: #f2a65a; /* mots en Satisfy sur fond foncé ou sur photo */
-  --terre: #b9502a;           /* boutons terre cuite (même teinte que les mots en Satisfy) */
+  --mot-script: #c0582f;          /* terre cuite : mots d'accent en italique sur fond clair */
+  --mot-script-fonce: #f2a65a; /* mots d'accent en italique sur fond foncé ou sur photo */
+  --terre: #b9502a;           /* boutons terre cuite (même teinte que les mots d'accent en italique) */
   --terre-survol: #a5461f;
   --sur-terre: #fbf6ee;
   --sur-accent: #163a3b;      /* texte sur les boutons turquoise */
@@ -49,14 +50,13 @@
   --sur-forte-doux: rgb(242 237 227 / 0.94);
   --profonde: #163a3b;        /* pied de page, sections sombres */
   --voile: 22 58 59;          /* voile sur les photos (rgb) */
-  --accent-sur-forte: #3fb5ac; /* mots en Satisfy sur les bandes */
+  --accent-sur-forte: #3fb5ac; /* mots d'accent en italique sur les bandes */
 }
 
 
 :root {
   --titre: "Fraunces", Georgia, serif;
   --texte: "Montserrat", system-ui, sans-serif;
-  --script: "Satisfy", cursive;
 
   --rayon: 22px;
   --rayon-petit: 14px;
@@ -96,10 +96,10 @@ a:hover { text-decoration-color: var(--accent); }
 
 h1, h2, h3 {
   font-family: var(--titre);
-  font-weight: 800;
-  font-variation-settings: "SOFT" 100, "WONK" 1;
-  line-height: 1.02;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;   /* la Fraunces nette du logo */
+  line-height: 1.04;
+  letter-spacing: -0.015em;
   margin: 0;
   text-wrap: balance;
 }
@@ -108,12 +108,15 @@ h2 { font-size: clamp(2.1rem, 1.4rem + 3.2vw, 4.25rem); }
 h3 { font-size: clamp(1.45rem, 1.2rem + 1vw, 2rem); line-height: 1.1; }
 p { margin: 0 0 1em; max-width: 68ch; }
 
+/* Mots d'accent : Fraunces italique, accordée au logo */
+.accent, .badge-bientot, .histoire__signature {
+  font-family: var(--titre); font-style: italic; font-weight: 600;
+  font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 1;
+}
 .accent {
-  font-family: var(--script);
-  font-weight: 400;
   color: var(--mot-script);
-  letter-spacing: 0;
-  font-size: 1.05em;
+  letter-spacing: -0.01em;
+  font-size: 1em;
 }
 .heros__texte .accent, .acces__bloc .accent { color: var(--mot-script-fonce); }
 
@@ -165,7 +168,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
   transition: transform 0.45s var(--sortie);
 }
 .nav a:hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); }
-.badge-bientot { font-family: var(--script); font-size: 1rem; font-weight: 400; color: var(--mot-script); line-height: 1; }
+.badge-bientot { font-size: 0.95rem; color: var(--terre); line-height: 1; }
 .entete__menu { display: none; }
 
 @media (max-width: 900px) {
@@ -265,7 +268,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .histoire__photo img { width: 100%; height: 100%; object-fit: cover; }
 .histoire h2 { margin-bottom: 0.5em; }
 .histoire p { font-size: 1.08rem; }
-.histoire .histoire__signature { font-family: var(--script); font-size: 2.6rem; color: var(--accent); line-height: 1; margin-top: 0.3em; }
+.histoire .histoire__signature { font-size: 2.2rem; color: var(--accent); line-height: 1; margin-top: 0.3em; }
 .section--forte .accent, .section--forte .histoire__signature { color: var(--mot-script-fonce); }
 @media (max-width: 860px) { .histoire { grid-template-columns: 1fr; } .histoire__photo { aspect-ratio: 4 / 3; } }
 
@@ -277,7 +280,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .qui__fondatrice { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(32px, 6vw, 96px); align-items: center; }
 .qui__fondatrice h3 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); color: var(--accent); margin-bottom: 0.6em; }
 .qui__fondatrice p { font-size: 1.08rem; color: var(--sur-forte-doux); }
-.qui .histoire__signature { font-family: var(--script); font-size: 2.6rem; line-height: 1; margin-top: 0.3em; }
+.qui .histoire__signature { font-size: 2.2rem; line-height: 1; margin-top: 0.3em; }
 .mission { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(32px, 6vw, 96px); align-items: center; }
 .mission h2 { margin-bottom: 0.6em; }
 .mission p { font-size: 1.08rem; }
@@ -289,7 +292,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .mosaique .mosaique__grande { grid-column: span 2; aspect-ratio: 16 / 10; border-radius: var(--rayon); }
 .valeurs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(16px, 2vw, 24px); counter-reset: valeur; }
 .valeurs li { counter-increment: valeur; padding: clamp(22px, 2.6vw, 32px); border-radius: var(--rayon-carte); background: var(--carte); border: 1px solid rgb(var(--ligne) / 0.1); }
-.valeurs li::before { content: "0" counter(valeur); display: block; font-family: var(--titre); font-weight: 800; font-size: 2.2rem; line-height: 1; color: var(--mot-script); margin-bottom: 18px; }
+.valeurs li::before { content: "0" counter(valeur); display: block; font-family: var(--titre); font-weight: 700; font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0; font-size: 2.2rem; line-height: 1; color: var(--mot-script); margin-bottom: 18px; }
 .valeurs h3 { font-size: 1.25rem; color: var(--marque); margin-bottom: 0.5em; }
 .valeurs p { margin: 0; color: var(--encre-douce); }
 @media (hover: hover) {
@@ -322,7 +325,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .avis__etoiles svg { width: 20px; height: 20px; }
 .avis__carte blockquote { margin: 0 0 auto; }
 .avis__carte blockquote p {
-  font-family: var(--titre); font-weight: 500; font-variation-settings: "SOFT" 100;
+  font-family: var(--titre); font-weight: 500; font-variation-settings: "opsz" 24, "SOFT" 0, "WONK" 0;
   font-size: clamp(1.1rem, 1rem + 0.4vw, 1.3rem); line-height: 1.45; max-width: none; margin: 0;
 }
 .avis__carte blockquote p::before { content: "«\00a0"; color: var(--accent); }
@@ -382,7 +385,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 }
 .carte__textes { display: flex; flex: 1; align-items: baseline; gap: 16px; }
 .carte__nom {
-  font-family: var(--titre); font-weight: 700; font-variation-settings: "SOFT" 100, "WONK" 1;
+  font-family: var(--titre); font-weight: 700; font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
   font-size: clamp(1.3rem, 1.1rem + 0.8vw, 1.75rem); line-height: 1.15; transition: color 0.3s, transform 0.5s var(--sortie);
 }
 .carte__duree { margin-left: auto; font-size: 0.9rem; font-weight: 600; color: var(--encre-douce); text-align: right; max-width: 16ch; }
@@ -453,7 +456,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
    Mouvement
    Idée directrice : le site se découvre « de l'intérieur ». La photo
    d'ouverture s'ouvre comme une entrée de cénote, et chaque mot en
-   Satisfy s'écrit de gauche à droite quand sa section arrive.
+   l'italique s'écrit de gauche à droite quand sa section arrive.
    Tout est visible par défaut : les états cachés ne s'appliquent que
    si le JavaScript a démarré (classe .js sur <html>).
    ===================================================================== */
@@ -518,7 +521,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 
 /* ---------- Organisation : l'essentiel ---------- */
 .essentiel { display: grid; grid-template-columns: repeat(2, 1fr); gap: clamp(28px, 4vw, 56px) clamp(32px, 6vw, 96px); margin: 0; }
-.essentiel dt { font-family: var(--titre); font-weight: 700; font-variation-settings: "SOFT" 100, "WONK" 1; font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem); color: var(--marque); margin-bottom: 8px; }
+.essentiel dt { font-family: var(--titre); font-weight: 700; font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0; font-size: clamp(1.4rem, 1.2rem + 0.8vw, 1.9rem); color: var(--marque); margin-bottom: 8px; }
 .essentiel dd { margin: 0; max-width: 52ch; }
 @media (max-width: 760px) { .essentiel { grid-template-columns: 1fr; } }
 
@@ -532,7 +535,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
   background: none; border: 0; color: inherit; font: inherit;
 }
 .envies__nom {
-  font-family: var(--titre); font-weight: 700; font-variation-settings: "SOFT" 100, "WONK" 1;
+  font-family: var(--titre); font-weight: 700; font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0;
   font-size: clamp(1.35rem, 1.1rem + 1vw, 2rem); line-height: 1.1;
   opacity: 0.8; transition: opacity 0.3s, transform 0.5s var(--sortie), color 0.3s;
 }
@@ -625,7 +628,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .etapes__pastille::after {
   content: counter(etape); position: absolute; top: -6px; right: -10px; display: grid; place-items: center;
   width: 32px; height: 32px; border-radius: 50%; background: var(--terre); color: var(--sur-terre);
-  font-family: var(--titre); font-weight: 800; font-size: 1.05rem; line-height: 1;
+  font-family: var(--titre); font-weight: 700; font-variation-settings: "opsz" 72, "SOFT" 0, "WONK" 0; font-size: 1.05rem; line-height: 1;
 }
 .etapes h3 { font-size: clamp(1.3rem, 1.1rem + 0.6vw, 1.6rem); margin: 6px 0 0; color: var(--marque); }
 .etapes p { margin: 0; font-size: 1.05rem; }
