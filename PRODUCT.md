@@ -49,6 +49,7 @@ Une Française installée au Yucatán depuis 2022, qui a travaillé avec une ONG
 
 - Nom : Toh Tours Yucatán. Logo : le « toh solaire », version « L'aile » (motmot dans un soleil, raquette turquoise), kit complet dans `images/logo/cenote/` avec son guide. Texte du logo vectorisé ; versions web dans `assets/img/logo/` (couleur sur fond clair, crème et turquoise sur fond foncé).
 - Palette « Cénote » (validée le 13/11/2026) : bleu cénote #1F4E4F (titres, liens, logo), turquoise #3FB5AC en accent (boutons, détails ; jamais en texte sur fond clair, texte #163A3B sur un bouton turquoise), crème #F2EDE3 (fond clair), foncé #163A3B (pied de page, sections sombres). Elle remplace l'ancienne charte olive, orange et crème.
+- Terre cuite du site (validée par Coline le 13/11/2026), pour certains textes et boutons : mots en Satisfy et grands textes sur fond clair #C0582F ; sur fond foncé ou photo #F2A65A ; boutons d'appel à l'action #B9502A avec texte crème #FBF6EE (survol #A5461F). Bleu cénote très clair #DDE9E4 pour des sections alternées. Jamais de terre cuite pour du petit texte sur fond crème.
 - Typographie : Montserrat pour les textes, Satisfy pour quelques accents, une serif expressive libre de droits pour les titres.
 - Ton : authentique et chaleureux, sans folklore. Le visiteur est vouvoyé ; Coline parle à la première personne.
 - Crédit photo : « © Toh Tours Yucatán ».
