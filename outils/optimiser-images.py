@@ -12,7 +12,7 @@ CIBLE = RACINE / "assets" / "img"
 LARGEURS = (800, 1600)
 
 CIBLE.mkdir(parents=True, exist_ok=True)
-for photo in sorted(SOURCE.rglob("*.jpg")):
+for photo in sorted(p for p in SOURCE.rglob("*.jpg") if "logo" not in p.parts):
     im = ImageOps.exif_transpose(Image.open(photo)).convert("RGB")
     for largeur in LARGEURS:
         sortie = CIBLE / f"{photo.stem}-{largeur}.webp"
@@ -23,10 +23,4 @@ for photo in sorted(SOURCE.rglob("*.jpg")):
             copie = copie.resize((largeur, round(copie.height * largeur / copie.width)), Image.LANCZOS)
         copie.save(sortie, "WEBP", quality=72, method=6)
 
-logo = Image.open(SOURCE / "logo" / "logo-toh-tours.png")
-for largeur in (320, 640):
-    l = logo.copy()
-    l = l.resize((largeur, round(l.height * largeur / l.width)), Image.LANCZOS)
-    l.save(CIBLE / f"logo-toh-tours-{largeur}.webp", "WEBP", quality=90, method=6)
-    l.save(CIBLE / f"logo-toh-tours-{largeur}.png", optimize=True)
 print("Images prêtes dans", CIBLE)

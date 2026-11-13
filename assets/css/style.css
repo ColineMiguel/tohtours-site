@@ -27,7 +27,8 @@
   --accent: #3fb5ac;          /* turquoise de la raquette : boutons, puces, détails */
   --accent-clair: #5cc4bc;    /* survol des boutons turquoise */
   --accent-texte: #17716b;    /* turquoise assez foncé pour du texte sur fond clair */
-  --accent-script: #17716b;   /* mots en Satisfy sur fond clair */
+  --mot-script: #c0582f;          /* terre cuite : mots en Satisfy sur fond clair */
+  --mot-script-fonce: #f2a65a; /* mots en Satisfy sur fond foncé ou sur photo */
   --sur-accent: #163a3b;      /* texte sur les boutons turquoise */
   --focus: #17716b;           /* contour clavier sur fond clair */
 
@@ -106,11 +107,11 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .accent {
   font-family: var(--script);
   font-weight: 400;
-  color: var(--accent-script);
+  color: var(--mot-script);
   letter-spacing: 0;
   font-size: 1.05em;
 }
-.heros__texte .accent, .acces__bloc .accent { color: var(--accent); }
+.heros__texte .accent, .acces__bloc .accent { color: var(--mot-script-fonce); }
 
 .conteneur { width: min(100% - 2 * var(--gouttiere), var(--largeur)); margin-inline: auto; }
 .lien-evitement {
@@ -158,7 +159,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
   transition: transform 0.45s var(--sortie);
 }
 .nav a:hover::after, .nav a[aria-current="page"]::after { transform: scaleX(1); }
-.badge-bientot { font-family: var(--script); font-size: 1rem; font-weight: 400; color: var(--accent-texte); line-height: 1; }
+.badge-bientot { font-family: var(--script); font-size: 1rem; font-weight: 400; color: var(--mot-script); line-height: 1; }
 .entete__menu { display: none; }
 
 @media (max-width: 900px) {
@@ -241,7 +242,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 }
 .acces__bloc:hover .acces__fleche { transform: translateX(4px); }
 .acces__bloc--bientot .acces__fleche { background: var(--sur-forte); }
-.acces__bloc .badge-bientot { display: block; font-size: 1.6rem; color: var(--sur-forte); margin-bottom: 4px; }
+.acces__bloc .badge-bientot { display: block; font-size: 1.6rem; color: var(--mot-script-fonce); margin-bottom: 4px; }
 @media (max-width: 760px) {
   .acces { grid-template-columns: 1fr; grid-template-rows: none; min-height: 0; }
   .acces__bloc { min-height: 300px; }
@@ -255,7 +256,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .histoire h2 { margin-bottom: 0.5em; }
 .histoire p { font-size: 1.08rem; }
 .histoire .histoire__signature { font-family: var(--script); font-size: 2.6rem; color: var(--accent); line-height: 1; margin-top: 0.3em; }
-.section--forte .accent, .section--forte .histoire__signature { color: var(--accent-sur-forte); }
+.section--forte .accent, .section--forte .histoire__signature { color: var(--mot-script-fonce); }
 @media (max-width: 860px) { .histoire { grid-template-columns: 1fr; } .histoire__photo { aspect-ratio: 4 / 3; } }
 
 /* ---------- Avis : défilement de droite à gauche ---------- */
@@ -402,7 +403,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .bientot { min-height: 60vh; display: grid; align-content: center; padding-block: var(--section); }
 .bientot .accent { font-size: clamp(2rem, 1.6rem + 2vw, 3.2rem); display: block; margin-bottom: 0.2em; }
 .bientot p { font-size: 1.15rem; margin-top: 1em; }
-.section--forte .circuit .accent { color: var(--accent-script); }
+.section--forte .circuit .accent { color: var(--mot-script); }
 
 /* =====================================================================
    Mouvement
@@ -502,7 +503,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 }
 .envies__scene > .est-active { opacity: 1; clip-path: inset(0 0 0 0); z-index: 1; }
 .envies__attente { display: grid; place-content: center; text-align: center; gap: 8px; background: var(--fond-doux); color: var(--marque); }
-.envies__attente .accent { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); color: var(--accent-texte); }
+.envies__attente .accent { font-size: clamp(2rem, 1.5rem + 2vw, 3rem); color: var(--mot-script); }
 .envies__attente small { font-weight: 600; letter-spacing: 0.02em; }
 @media (max-width: 860px) {
   .envies { grid-template-columns: 1fr; }
@@ -546,6 +547,7 @@ p { margin: 0 0 1em; max-width: 68ch; }
 /* Photos ajoutées le 12/11 */
 .histoire__photo--portrait img { object-position: 50% 25%; }
 .heros__cadre img.heros__img--lagune { object-position: 50% 62%; }
+.heros__cadre img.heros__img--tortillas { object-position: 50% 45%; }
 .bientot--photo { grid-template-columns: 1fr 0.9fr; gap: clamp(28px, 6vw, 96px); align-items: center; }
 .bientot__photo { margin: 0; border-radius: var(--rayon); overflow: hidden; aspect-ratio: 4 / 5; box-shadow: var(--ombre); }
 .bientot__photo img { width: 100%; height: 100%; object-fit: cover; }
