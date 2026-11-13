@@ -1,6 +1,6 @@
 # Nos deux circuits à Yalcobá
 
-Tous nos circuits sont privés, accompagnés en français (anglais et espagnol possibles), à partir de 2 personnes. Le transport n'est pas inclus. Yalcobá se trouve à 30 minutes de Valladolid.
+Tous nos circuits sont privés, accompagnés en français, à partir de 2 personnes. Le transport n'est pas inclus. Yalcobá se trouve à 30 minutes de Valladolid.
 
 ## Demi-journée Essentiel
 
@@ -9,7 +9,7 @@ Tous nos circuits sont privés, accompagnés en français (anglais et espagnol p
 Une immersion courte mais complète au cœur de Yalcobá, entre nature, culture et gastronomie. Réalisable le matin comme l'après-midi, idéale à combiner avec Ek Balam ou Chichén Itzá.
 
 - **9 h** : rencontre avec Maritza et ses abeilles mélipones, dégustation de miel
-- **10 h 30** : baignade au cénote Xcanahaltun ou Chaachab
+- **10 h 30** : baignade en cénote
 - **12 h** : repas traditionnel chez une famille du village
 - **13 h** : fin de l'excursion
 
@@ -21,7 +21,7 @@ Une journée pour vivre au rythme du village, entre cuisine, nature et savoir-fa
 
 - **9 h** : atelier de cuisine traditionnelle avec une famille (recado, tortillas faites à la main)
 - **10 h** : découverte des abeilles mélipones et dégustation de miel
-- **11 h** : baignade au cénote Xcanahaltun ou Chaachab
+- **11 h 30** : baignade en cénote
 - **12 h 30** : repas préparé pendant l'atelier
 - **14 h** : atelier d'artisanat avec les artisanes du village (attrape-rêves ou bracelet)
 - **16 h** : fin de l'excursion
