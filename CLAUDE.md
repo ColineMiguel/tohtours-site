@@ -4,7 +4,7 @@ Instructions pour Claude Code dans ce dépôt.
 
 ## Projet
 
-Site web de Toh Tours Yucatán : excursions et circuits dans la péninsule du Yucatán (Valladolid, Yalcobá). Le site est publié gratuitement avec GitHub Pages depuis ce dépôt. Il n'y a pas encore de nom de domaine.
+Site web de Toh Tours Yucatán : excursions et circuits dans la péninsule du Yucatán (Valladolid, Yalcobá). Le site est publié gratuitement avec GitHub Pages depuis ce dépôt. Nom de domaine : tohtours.com (fichier `CNAME`). Les URL absolues (canonical, og:url, og:image, sitemap.xml, robots.txt) utilisent https://tohtours.com : à mettre à jour si le domaine change.
 
 ## Public et langues
 

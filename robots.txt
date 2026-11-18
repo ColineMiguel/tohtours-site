@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /organisation-brouillon.html
+
+Sitemap: https://tohtours.com/sitemap.xml
