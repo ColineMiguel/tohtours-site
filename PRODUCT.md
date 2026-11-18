@@ -32,7 +32,7 @@ Une Française installée au Yucatán depuis 2022, qui a travaillé avec une ONG
 
 ## Operating Context
 
-- Réservation et devis uniquement par WhatsApp (+52 985 106 0333, wa.me/529851060333) ; catalogue professionnel par e-mail (tohtoursyucatan@gmail.com) ; Instagram tohtours_yucatan.
+- Réservation et devis uniquement par WhatsApp (+52 985 106 0333, wa.me/529851060333) ; catalogue professionnel par e-mail (contact@tohtours.com) ; Instagram tohtours_yucatan.
 - Pas de paiement en ligne, pas de formulaire. Un acompte confirme la réservation.
 - Transport jamais inclus dans les excursions ; Yalcobá est à 30 min de Valladolid.
 - Excursions privées, à partir de 2 personnes, jusqu'à 15 (10 pour les ateliers).
