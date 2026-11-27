@@ -14,7 +14,7 @@
   <link rel="preload" href="assets/fonts/fraunces.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/fraunces-italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/montserrat.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="assets/css/style.css?v=2">
+  <link rel="stylesheet" href="assets/css/style.css?v=3">
   <script>document.documentElement.classList.add("js")</script>
   <meta property="og:title" content="Toh Tours Yucatán">
   <meta property="og:description" content="Le Yucatán maya, vécu de l'intérieur. Excursions, voyages sur mesure, réceptif.">
@@ -37,8 +37,8 @@
       <nav class="nav" id="nav" aria-label="Menu principal">
         <ul>
           <li><a href="excursions.html">Excursions</a></li>
-          <li><a href="organisation.html">Organisation de voyage <span class="badge-bientot">Bientôt</span></a></li>
-          <li><a href="receptif.html" aria-current="page">Réceptif <span class="badge-bientot">Bientôt</span></a></li>
+          <li><a href="organisation.html">Organisation de voyage</a></li>
+          <li><a href="receptif.html" aria-current="page">Réceptif</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
@@ -49,17 +49,108 @@
   </header>
 
   <main id="contenu">
-    <section class="conteneur bientot bientot--photo" aria-labelledby="titre-page">
-      <div>
-      <span class="accent">Bientôt</span>
-      <h1 id="titre-page">Réceptif</h1>
-      <p>Votre partenaire local au Yucatán pour agences de voyage et travel planners.</p>
-      <div class="heros__actions">
-        <a class="bouton bouton--terre" href="https://wa.me/529851060333"><svg aria-hidden="true"><use href="assets/img/icones.svg#whatsapp"/></svg> Écrire sur WhatsApp</a>
-        <a class="bouton bouton--contour-fonce" href="excursions.html">Voir les excursions</a>
+    <section class="heros" aria-labelledby="titre-page">
+      <div class="conteneur">
+        <div class="heros__cadre">
+          <img src="assets/img/bureau_01-800.webp" srcset="assets/img/bureau_01-800.webp 800w, assets/img/bureau_01-1600.webp 1600w" sizes="(max-width: 1240px) 100vw, 1240px" fetchpriority="high" alt="Un bureau de travail avec ordinateurs, devant une fenêtre" width="800" height="1067">
+          <div class="heros__texte">
+            <h1 id="titre-page"><span class="accent">Réceptif</span></h1>
+            <p class="heros__sous-titre">Votre <strong>partenaire local au Yucatán</strong> pour agences de voyage et travel planners.</p>
+            <div class="heros__actions">
+              <a class="bouton bouton--terre" href="mailto:contact@tohtours.com?subject=Demande%20r%C3%A9ceptif"><svg aria-hidden="true"><use href="assets/img/icones.svg#mail"/></svg> Demander le catalogue</a>
+              <a class="bouton bouton--contour" href="#services">Nos services</a>
+            </div>
+          </div>
+        </div>
       </div>
+    </section>
+
+    <section class="section" aria-labelledby="titre-partenaire">
+      <div class="conteneur zone zone--texte-seul">
+        <div class="zone__texte" data-apparition>
+          <p class="surtitre">Pour les professionnels du voyage</p>
+          <h2 id="titre-partenaire">Vos voyageurs, entre de <span class="accent">bonnes mains</span></h2>
+        </div>
+        <div class="zone__texte" data-apparition>
+          <p>Vous vendez des voyages dans la péninsule du Yucatán&nbsp;? Nous prenons le relais sur place. Basés à <strong>Valladolid</strong>, au cœur de la péninsule, nous réservons, coordonnons et suivons les séjours de vos clients, <strong>en français</strong>, du premier au dernier jour.</p>
+          <p>Vous gardez la relation avec vos clients, nous nous occupons du terrain.</p>
+        </div>
       </div>
-      <figure class="bientot__photo"><img src="assets/img/bureau_01-800.webp" srcset="assets/img/bureau_01-800.webp 800w, assets/img/bureau_01-1600.webp 1600w" sizes="(max-width: 860px) 100vw, 45vw" alt="Un bureau de travail avec ordinateurs, devant une fenêtre" width="800" height="1067" fetchpriority="high"></figure>
+      <div class="conteneur">
+        <dl class="reperes">
+          <div data-apparition><dt>Pour qui</dt><dd><span class="reperes__grand">Agences et <span class="accent">travel planners</span></span>Nous intervenons sur place pour le compte de votre agence.</dd></div>
+          <div data-apparition><dt>Groupes</dt><dd><span class="reperes__grand">De 2 à 15 <span class="accent">voyageurs</span></span>En petits groupes privés, pour un suivi vraiment personnalisé.</dd></div>
+          <div data-apparition><dt>Zone</dt><dd><span class="reperes__grand">Toute la <span class="accent">péninsule</span></span>Yucatán, Quintana Roo et Campeche.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="section section--cenote" id="services" aria-labelledby="titre-services">
+      <div class="conteneur">
+        <div class="section__entete" data-apparition>
+          <h2 id="titre-services">Nos <span class="accent">services</span></h2>
+        </div>
+        <ul class="services">
+          <li data-apparition><h3>Réservations</h3><p>Hébergements, activités et excursions, auprès de <strong>prestataires locaux de confiance</strong>.</p></li>
+          <li data-apparition><h3>Paiements sur place</h3><p>Nous <strong>réglons les prestataires locaux</strong> pour vous, sans démarches de votre côté.</p></li>
+          <li data-apparition><h3>Logistique</h3><p>Transferts ou location de voiture, horaires et <strong>coordination entre les étapes</strong>.</p></li>
+          <li data-apparition><h3>Conciergerie</h3><p>Réponses aux questions de vos voyageurs, recommandations et <strong>ajustements du programme</strong>.</p></li>
+          <li data-apparition><h3>Suivi sur place</h3><p>Un contact joignable pendant tout le séjour, <strong>présent en cas d'imprévu</strong>.</p></li>
+          <li data-apparition><h3>Excursions à Yalcobá</h3><p>Une journée de <strong>tourisme communautaire</strong> avec des familles mayas, guidée en français. <a href="excursions.html">Voir l'excursion</a></p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section--creme" aria-labelledby="titre-pourquoi">
+      <div class="conteneur">
+        <div class="section__entete" data-apparition>
+          <h2 id="titre-pourquoi">Pourquoi travailler <span class="accent">avec nous</span></h2>
+        </div>
+        <ul class="valeurs">
+          <li data-apparition><h3>Sur le terrain</h3><p>Nous vivons à Valladolid, à mi-chemin entre Cancún et Mérida, à 45 minutes de Chichén Itzá.</p></li>
+          <li data-apparition><h3>Francophones</h3><p>Une fondatrice française installée au Yucatán&nbsp;: vos clients sont accompagnés <strong>dans leur langue</strong>.</p></li>
+          <li data-apparition><h3>À taille humaine</h3><p>Des petits groupes privés, et <strong>un seul interlocuteur</strong> pour vous comme pour vos voyageurs.</p></li>
+          <li data-apparition><h3>Authentique</h3><p>Un lien direct avec les familles de Yalcobá et des partenaires locaux choisis un par un.</p></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="titre-etapes">
+      <div class="conteneur">
+        <div class="section__entete" data-apparition>
+          <h2 id="titre-etapes">Comment nous <span class="accent">travaillons</span></h2>
+        </div>
+        <ol class="etapes" data-apparition>
+          <li>
+            <span class="etapes__pastille" aria-hidden="true"><svg><use href="assets/img/icones.svg#message"/></svg></span>
+            <h3>Votre demande</h3>
+            <p>Vous nous envoyez <strong>le programme ou la demande</strong> de vos clients&nbsp;: dates, nombre de voyageurs, envies.</p>
+          </li>
+          <li>
+            <span class="etapes__pastille" aria-hidden="true"><svg><use href="assets/img/icones.svg#carte"/></svg></span>
+            <h3>Nous organisons</h3>
+            <p>Nous <strong>réservons et coordonnons</strong> les prestations sur place, et vous tenons informés.</p>
+          </li>
+          <li>
+            <span class="etapes__pastille" aria-hidden="true"><svg><use href="assets/img/icones.svg#boussole"/></svg></span>
+            <h3>Nous suivons vos voyageurs</h3>
+            <p>Pendant le séjour, nous restons <strong>joignables et réactifs</strong>, pour eux comme pour vous.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section section--forte" aria-labelledby="titre-catalogue">
+      <div class="conteneur salsa" data-apparition>
+        <h2 id="titre-catalogue">Travaillons <span class="accent">ensemble</span></h2>
+        <div>
+          <p><strong>Catalogue et conditions professionnelles sur demande.</strong> Écrivez-nous en présentant votre agence, nous vous répondons rapidement.</p>
+          <div class="heros__actions">
+            <a class="bouton bouton--terre" href="mailto:contact@tohtours.com?subject=Demande%20r%C3%A9ceptif"><svg aria-hidden="true"><use href="assets/img/icones.svg#mail"/></svg> contact@tohtours.com</a>
+            <a class="bouton bouton--contour" href="https://wa.me/529851060333"><svg aria-hidden="true"><use href="assets/img/icones.svg#whatsapp"/></svg> WhatsApp</a>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -89,6 +180,6 @@
   <a class="whatsapp-flottant" href="https://wa.me/529851060333" aria-label="Écrire sur WhatsApp">
     <svg aria-hidden="true"><use href="assets/img/icones.svg#whatsapp"/></svg>
   </a>
-  <script src="assets/js/main.js?v=2" defer></script>
+  <script src="assets/js/main.js?v=3" defer></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 # Organisation de voyage
 
-Statut : brouillon, affiché « Bientôt » sur le site tant que Coline ne l'a pas validé.
+Statut : page complète en ligne après validation de Coline (PR « Organisation de voyage et Réceptif »). Textes à la 1re personne du pluriel (« nous »). La page HTML fait foi.
 
 ## Sous-titre
 Votre voyage au Yucatán, conçu sur mesure et accompagné de A à Z.
@@ -9,7 +9,7 @@ Votre voyage au Yucatán, conçu sur mesure et accompagné de A à Z.
 - Zone : uniquement la péninsule du Yucatán. Séjours de 1 à 3 semaines.
 - Pour qui : couples, familles et groupes, à partir de 2 personnes.
 - Ce que j'organise : les hébergements chez des partenaires de confiance francophones, les transferts ou la location de voiture, les activités, souvent avec le petit-déjeuner compris (demi-pension). Un service de conciergerie et de suivi des voyageurs une fois sur place.
-- Un voyage est toujours personnalisé : on construit les activités ensemble selon vos envies. Prix : sur devis.
+- Un voyage est toujours personnalisé : on construit les activités ensemble selon vos envies. Prix : à partir de 2 000 € par personne, hors vols internationaux, base 2 personnes ; devis sur mesure.
 
 ## Vos envies
 - Culture et rencontres locales

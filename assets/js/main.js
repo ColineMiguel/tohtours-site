@@ -129,36 +129,35 @@
     choisir(0);
   });
 
-  // Itinéraire : la carte et la liste des étapes se répondent
+  // Itinéraire : le nom de l'étape apparaît au survol (ou au toucher) de son numéro sur la carte
   document.querySelectorAll("[data-itineraire]").forEach(function (bloc) {
-    var etapes = bloc.querySelectorAll(".itin__etape");
+    var carte = bloc.querySelector(".itin__carte");
+    var pins = bloc.querySelectorAll(".itin__pin");
     var marques = bloc.querySelectorAll(".itin__pin, .itin__point");
     var etiquette = bloc.querySelector(".itin__etiquette");
-    bloc.querySelectorAll(".itin__pin").forEach(function (pin, i) { pin.style.setProperty("--i", i); });
-    var choisir = function (n) {
-      etapes.forEach(function (b) {
-        var actif = b.dataset.etape === n;
-        b.classList.toggle("est-actif", actif);
-        b.setAttribute("aria-pressed", actif ? "true" : "false");
-        if (actif && b.dataset.x) {
-          etiquette.textContent = b.textContent.replace(/^\s*\d+\s*/, "");
-          etiquette.style.setProperty("--ex", b.dataset.x + "%");
-          etiquette.style.setProperty("--ey", b.dataset.y + "%");
-        }
-        if (actif) etiquette.classList.toggle("est-visible", !!b.dataset.x);
-      });
+    var vb = carte.viewBox.baseVal;
+    pins.forEach(function (pin, i) { pin.style.setProperty("--i", i); });
+    var montrer = function (pin) {
+      var n = pin ? pin.dataset.etape : null;
       marques.forEach(function (m) { m.classList.toggle("est-actif", m.dataset.etape === n); });
+      if (!pin) { etiquette.classList.remove("est-visible"); return; }
+      var x = parseFloat(pin.style.getPropertyValue("--x")), y = parseFloat(pin.style.getPropertyValue("--y"));
+      var px = x / vb.width * 100;
+      etiquette.textContent = pin.dataset.nom;
+      etiquette.style.setProperty("--ex", Math.min(Math.max(px, 14), 86) + "%");
+      etiquette.style.setProperty("--ey", (y / vb.height * 100) + "%");
+      etiquette.classList.add("est-visible");
     };
-    etapes.forEach(function (b) {
-      b.setAttribute("aria-pressed", "false");
-      b.addEventListener("click", function () { choisir(b.dataset.etape); });
-      b.addEventListener("focus", function () { choisir(b.dataset.etape); });
-      b.addEventListener("mouseenter", function () { if (window.matchMedia("(hover: hover)").matches) choisir(b.dataset.etape); });
+    var survol = window.matchMedia("(hover: hover)");
+    pins.forEach(function (pin) {
+      pin.addEventListener("mouseenter", function () { if (survol.matches) montrer(pin); });
+      pin.addEventListener("mouseleave", function () { if (survol.matches) montrer(null); });
+      pin.addEventListener("focus", function () { montrer(pin); });
+      pin.addEventListener("blur", function () { montrer(null); });
+      pin.addEventListener("click", function (e) { e.stopPropagation(); montrer(pin); });
+      pin.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); montrer(pin); } });
     });
-    bloc.querySelectorAll(".itin__pin").forEach(function (pin) {
-      pin.addEventListener("click", function () { choisir(pin.dataset.etape); });
-      pin.addEventListener("mouseenter", function () { choisir(pin.dataset.etape); });
-    });
+    document.addEventListener("click", function () { if (!survol.matches) montrer(null); });
   });
 
   // Les avis ne défilent que lorsqu'ils sont à l'écran
