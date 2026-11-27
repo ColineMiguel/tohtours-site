@@ -748,7 +748,9 @@ p { margin: 0 0 1em; max-width: 68ch; }
 .section__entete--centre p { margin-left: auto; margin-right: auto; }
 
 /* ---------- Réceptif ---------- */
-.zone--texte-seul { align-items: end; }
+.zone--texte-seul { align-items: start; }
+.zone--texte-seul h2 { font-size: clamp(2rem, 1.4rem + 2.4vw, 3.4rem); }
+.zone--texte-seul .zone__texte p:not(.surtitre) { font-size: 1.08rem; }
 .zone--texte-seul .zone__texte h2 { margin-bottom: 0; }
 .services { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 56px); }
 .services li { border-top: 2px solid var(--terre); padding-top: 20px; }
