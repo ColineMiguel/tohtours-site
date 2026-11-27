@@ -1,6 +1,6 @@
 # Réceptif
 
-Statut : brouillon, affiché « Bientôt » sur le site tant que Coline ne l'a pas validé.
+Statut : page complète en ligne après validation de Coline (PR « Organisation de voyage et Réceptif »). Textes à la 1re personne du pluriel (« nous »). La page HTML fait foi.
 
 ## Sous-titre
 Votre partenaire local au Yucatán pour agences de voyage et travel planners.
